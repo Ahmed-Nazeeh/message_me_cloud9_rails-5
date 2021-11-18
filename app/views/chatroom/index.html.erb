@@ -13,29 +13,23 @@
     <div class="ui fluid raised card chatbox">
       <div class="content">
         <div class="ui feed">
-          <% @messages.each do |message|  %>
-            <div class="event">
-              <div class="content">
-                <div class="summary">
-                  <a><%= message.user.username%> </a>
-                  <em>: </em>
-                  <em><%= message.body %> </em>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render @messages %> <!--rails provide easy loop without adding do loop through the instance variable direct connect to message partial.-->
         </div>
       </div>
       
       <div class="extra content">
-         <form class="ui reply form">
+         <!--<form class="ui reply form">-->
+         <%= form_for(@message, html: {class: "ui reply form", role: "form"}, url: message_path) do |f| %>
           <div class="field">
            <div class="ui fluid icon input">
-             <input type="text" placeholder="Enter message...">
-            <i class="bordered inverted orange edit icon"></i>
+             <!--<input type="text" placeholder="Enter message...">-->
+             <%= f.text_field :body %>
+            <!--<i class="bordered inverted orange edit icon"></i>-->
+            <%= f.button '<i class="bordered inverted orange edit icon"></i>'.html_safe %>
            </div>
           </div>
-         </form>
+         <!--</form>-->
+         <% end %>
       </div>
     </div>
   </div>
