@@ -1,6 +1,6 @@
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:d0ed635634356d4408c1effb00bc9493@hoki.redistogo.com:9247/" } %>
+  url: <%= ENV.fetch("REDIS_URL") { "redis://redistogo:9d6c937dc66d47a4e3a27d73c9e3634d@pearlfish.redistogo.com:10381/" } %>
   channel_prefix: message_me_production
 development:
   adapter: async
